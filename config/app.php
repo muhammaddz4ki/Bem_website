@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\ServiceProvider;
+
 return [
 
     /*
@@ -65,7 +67,10 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // ===========================================
+    // UBAH INI (Sesuai permintaanmu)
+    // ===========================================
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -122,5 +127,36 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Autoloaded Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded on the
+    | request to your application. Feel free to add your own services to
+    | this array to grant expanded functionality to your applications.
+    |
+    */
+
+    // Bagian ini mungkin sedikit berbeda di versimu, cari saja array 'providers'
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+
+        // ===========================================
+        // TAMBAHKAN BARIS INI (Ini perbaikannya)
+        // ===========================================
+        App\Providers\AuthServiceProvider::class,
+
+        App\Providers\RouteServiceProvider::class,
+
+    ])->toArray(), // Pastikan barismu ada di dalam array ini
 
 ];

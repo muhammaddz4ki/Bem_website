@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            // Tambahkan kolom 'role' setelah kolom 'email'
+            // Kita beri nilai default 'user'
+            // Nanti kita akan punya 'user' dan 'superadmin'
+            $table->string('role')->after('email')->default('user');
         });
     }
 
@@ -22,7 +25,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            // Ini untuk membatalkan migrasi (jika diperlukan)
+            $table->dropColumn('role');
         });
     }
 };
